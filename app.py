@@ -11,11 +11,11 @@ def main():
     choice = st.sidebar.selectbox('메뉴', menu)
 
     if choice == menu[0] :
-        run_home()
+        run_home() 
     elif choice == menu[1] :
         run_eda()
     elif choice == menu[2] :
-        run_ml() 
+        run_ml()
 
-if __name__ == '__main__':
+if __name__ == '__main__' :
     main()

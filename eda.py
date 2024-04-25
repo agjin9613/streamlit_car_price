@@ -10,8 +10,6 @@ def run_eda():
 
     df = pd.read_csv('./data/Car_Purchasing_Data.csv')
 
-    print(df)
-
     radio_menu = ['데이터 프레임', '통계치']
 
     choice_radio = st.radio('선택하세요', radio_menu)
@@ -26,13 +24,13 @@ def run_eda():
 
         st.text('컬럼을 선택하면, 각 컬럼별 최대/최소 데이터를 보여드립니다.')
         column_list = ['Age', 'Annual Salary', 'Credit Card Debt', 'Net Worth', 'Car Purchase Amount']
-        choice_column = selected_column = st.selectbox('컬럼을 선택하세요.', column_list)
-
+        choice_column = st.selectbox('컬럼을 선택하세요.', column_list)
+        
         st.info(f'선택하신 {choice_column}의 최대 데이터는 다음과 같습니다.')
-        st.dataframe( df.loc[df['Annual Salary'] == df['Annual Salary'].max() , ] )
-
+        st.dataframe(df.loc[df[choice_column] == df[choice_column].max()])
+        
         st.info(f'선택하신 {choice_column}의 최소 데이터는 다음과 같습니다.')
-        st.dataframe( df.loc[df['Annual Salary'] == df['Annual Salary'].min() , ] )
+        st.dataframe(df.loc[df[choice_column] == df[choice_column].min()])
 
         st.subheader('상관관계 분석')
         st.text('컬럼들을 2개 이상 선택하면, 컬럼들의 상관계수를 보여드립니다.')
@@ -54,7 +52,3 @@ def run_eda():
         
         else : 
             st.text('컬럼은 2개 이상 선택해야 합니다.')
-
-        if selected_column:
-            st.text(f"최대값: {df[selected_column].max()}")
-            st.text(f"최소값: {df[selected_column].min()}")
