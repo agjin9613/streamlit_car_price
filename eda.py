@@ -14,14 +14,10 @@ def run_eda():
 
     choice_radio = st.radio('선택하세요', radio_menu)
 
-    if choice_radio == radio_menu[0]: 
+    if choice_radio == radio_menu[0] or choice_radio == radio_menu[1]: 
         st.dataframe(df)
-    elif choice_radio == radio_menu[1]:
-        st.dataframe(df.describe())
 
-        # 각 컬럼별로 최대/최소값을 보여주는 화면 개발,
-        # 유저가 컬럼을 선택하면, 해당 컬럼의 최대/최소값을 보여주도록 하자.
-
+        # 최대/최소값 및 상관관계 분석
         st.text('컬럼을 선택하면, 각 컬럼별 최대/최소 데이터를 보여드립니다.')
         column_list = ['Age', 'Annual Salary', 'Credit Card Debt', 'Net Worth', 'Car Purchase Amount']
         choice_column = st.selectbox('컬럼을 선택하세요.', column_list)
