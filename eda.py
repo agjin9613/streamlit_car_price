@@ -13,9 +13,11 @@ def run_eda():
     radio_menu = ['데이터 프레임', '통계치']
 
     choice_radio = st.radio('선택하세요', radio_menu)
-
-    if choice_radio == radio_menu[0] or choice_radio == radio_menu[1]: 
+    
+    if choice_radio == radio_menu[0]:
         st.dataframe(df)
+    elif choice_radio == radio_menu[1]:
+        st.dataframe(df.describe())
 
         # 최대/최소값 및 상관관계 분석
         st.text('컬럼을 선택하면, 각 컬럼별 최대/최소 데이터를 보여드립니다.')
